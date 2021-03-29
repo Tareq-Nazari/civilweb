@@ -80,10 +80,10 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fa',
 
     /*
-    |--------------------------------------------------------------------------
+    |-------------- ------------------------------------------------------------
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |
@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        \Tareghnazari\User\Providers\UserServiceProvider::class,
 
         /*
          * Package Service Providers...
