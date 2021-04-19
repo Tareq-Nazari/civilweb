@@ -26,6 +26,9 @@
                 <input class="activation-code-input" placeholder="فعال سازی">
                 <br>
                 <button class="btn i-t">تایید</button>
+                <form method="post" action="{{route('verification.resend')}}">
+                    <a type="submit">ارسال مجدد کد</a>
+                </form>
 
             </div>
             <div class="form-footer">

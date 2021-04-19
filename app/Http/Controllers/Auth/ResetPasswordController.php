@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use Tareghnazari\User\Services\UserService;
+use Tareghnazari\User\Services\VerifyCodeService;
 
 class ResetPasswordController extends Controller
 {
@@ -28,12 +30,25 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
     public function showResetForm(Request $request)
     {
-        $token = $request->route()->parameter('token');
 
-        return view('User::Front.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
+        if (VerifyCodeService::check($request->id, $request->reset_code)) {
+            auth()->loginUsingId($request->id);
+            return view('User::Front.passwords.reset');
+        }
+
+        return back();
+
+
     }
+
+    public function reset(Request $request)
+    {
+        UserService::resetPassword(auth()->user(),$request->password);
+        return redirect('/home');
+    }
+
+
 }

@@ -19,4 +19,14 @@ Route::get('/',function (){
    return view('index');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/test', function (){
+    return new \Tareghnazari\User\Mail\VerifyCodeMail(255333);
+})->name('test');
+
+
+Route::get('verify-link/{user}',function (){
+
+})->name('verify-link');
+
+Route::get('/sendMail',[\App\Http\Controllers\Controller::class,'sendMail']);

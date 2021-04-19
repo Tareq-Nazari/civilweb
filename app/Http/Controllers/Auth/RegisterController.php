@@ -75,6 +75,7 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ]);
+
     }
 
     public function showRegistrationForm()

@@ -3676,9 +3676,12 @@ textarea {
      margin-top:170px;
  }
 .invalid-feedback {
-    color: red;
+    color: red !important;
     font-size: 12px;
 }
 .is-invalid {
     border: 1px solid red;
+}
+strong {
+    color: red;
 }

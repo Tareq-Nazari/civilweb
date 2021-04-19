@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
+use Tareghnazari\User\Models\User;
+use Tareghnazari\User\Notifications\ResetPasswordNotification;
+use Tareghnazari\User\Repositories\UserRepo;
+use Tareghnazari\User\Services\VerifyCodeService;
 
 class ForgotPasswordController extends Controller
 {
@@ -25,4 +30,20 @@ class ForgotPasswordController extends Controller
     {
         return view('User::Front.passwords.email');
     }
+
+
+    public function sendResetLinkEmail(Request $request)
+    {
+        $user = resolve(UserRepo::class)->findByEmail($request->email);
+        if ($user) {
+
+            $user->sendResetPasswordNotification();
+            return view('User::Front.verify-code-reset-password')->with(['id' => $user->id]);
+
+        }
+        return back();
+    }
+
+
+
 }
