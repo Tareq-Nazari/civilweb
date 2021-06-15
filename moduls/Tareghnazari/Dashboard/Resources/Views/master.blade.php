@@ -17,22 +17,26 @@
 
 <div class="sidebar__nav border-top border-left  ">
     <span class="bars d-none padding-0-18"></span>
-    <a class="header__logo  d-none" href="https://webamooz.net"></a>
+    <a class="header__logo  d-none" href=""></a>
     <form action="{{route('user.profileImage')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="profile__info border cursor-pointer text-center">
-
-            <div class="avatar__img"><img  src="@if(is_object(auth()->user()->image))
+            <div class="avatar__img"><img  src="@auth()
+                    @if(auth()->user()->image)
                 {{auth()->user()->image->thumb}}
-                @else /panel/img/pro.jpg
-            @endif
+                @else
+                    /panel/img/pro.jpg
+                    @endif
+@endauth
 
                     " class="avatar___img">
                 <input onchange="this.form.submit()" name="image" type="file" accept="image/*" class="hidden avatar-img__input">
                 <div class="v-dialog__container" style="display: block;"></div>
                 <div class="box__camera default__avatar"></div>
             </div>
-            <span class="profile__name">کاربر : {{auth()->user()->name}}</span>
+            <span class="profile__name">کاربر :
+               @auth() {{auth()->user()->name}} @endauth
+            </span>
         </div>
     </form>
 
@@ -42,7 +46,15 @@
 {{--        <li class="item-li i-courses "><a href="courses.html">دوره ها</a></li>--}}
 {{--        <li class="item-li i-users"><a href="users.html"> کاربران</a></li>--}}
         @foreach(config('sidebar.items') as $sidebarItem)
-        <li class="item-li {{$sidebarItem['icon']}} @if(request()->url() == $sidebarItem['url']) is-active @endif"><a href="{{$sidebarItem['url']}}">{{$sidebarItem['title']}}</a></li>
+{{--            todo item permissions--}}
+            @if(!array_key_exists('permission', $sidebarItem) ||
+                   auth()->user()->hasPermissionTo($sidebarItem['permission']) ||
+                   auth()->user()->hasPermissionTo(\Tareghnazari\RolePermissions\Models\Permission::PERMISSION_SUPER_ADMIN)
+                   )
+        <li class="item-li {{$sidebarItem['icon']}} @if(request()->url() == $sidebarItem['url']) is-active @endif">
+            <a href="{{$sidebarItem['url']}}">{{$sidebarItem['title']}}</a>
+        </li>
+            @endif
         @endforeach
 {{--        <li class="item-li i-slideshow"><a href="slideshow.html">اسلایدشو</a></li>--}}
 {{--        <li class="item-li i-banners"><a href="banners.html">بنر ها</a></li>--}}
@@ -66,7 +78,7 @@
     <div class="header d-flex item-center bg-white width-100 border-bottom padding-12-30">
         <div class="header__right d-flex flex-grow-1 item-center">
             <span class="bars"></span>
-            <a class="header__logo" href="https://webamooz.net"></a>
+            <a class="header__logo" href=""></a>
         </div>
         <div class="header__left d-flex flex-end item-center margin-top-2">
             <span class="account-balance font-size-12">موجودی : 2500,000 تومان</span>
@@ -86,12 +98,21 @@
         </div>
     </div>
 
-
+    @if($m = session('err'))
+        <div>
+            <div class="alert-box failure">{{$m}}</div>
+        </div>
+    @endif
+    @if($m = session('success'))
+        <div>
+            <div class="alert-box success">{{$m}}</div>
+        </div>
+    @endif
 @yield('content')
 </div>
 </body>
 <script src="/panel/js/jquery-3.4.1.min.js"></script>
 <script src="/panel/js/toast-plugin.js"></script>
 <script src="/panel/js/js.js"></script>
-
+@yield('js')
 </html>

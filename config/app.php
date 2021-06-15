@@ -183,6 +183,8 @@ return [
         Tareghnazari\RolePermissions\Providers\RolePermissionsServiceProvider::class,
         Tareghnazari\Course\Providers\CourseServiceProvider::class,
         Tareghnazari\Media\Providers\MediaServiceProvider::class,
+        Tareghnazari\Front\Providers\FrontServiceProvider::class,
+        Tareghnazari\Payment\Providers\PaymentServiceProvider::class,
 
     ],
 

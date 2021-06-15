@@ -24,7 +24,7 @@
                             <input type="text"  class="text" placeholder="قیمت">
                             <input type="text"  class="text" placeholder="نام مدرس">
                             <input type="text"  class="text margin-bottom-20" placeholder="دسته بندی">
-                            <btutton class="btn btn-webamooz_net">جستجو</btutton>
+                            <btutton class="btn btn-tot">جستجو</btutton>
                         </div>
                     </div>
                 </form>

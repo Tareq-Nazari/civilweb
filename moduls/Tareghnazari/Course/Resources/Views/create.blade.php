@@ -58,7 +58,7 @@
                 <x-file placeholder="آپلود بنر دوره" name="image" />
                 <x-textarea placeholder="توضیحات دوره" name="body" />
                 <br>
-                <button class="btn btn-webamooz_net">ایجاد دوره</button>
+                <button class="btn btn-tot">ایجاد دوره</button>
             </form>
         </div>
     </div>

@@ -36,7 +36,7 @@
                         <input type="text" name="mobile"  class="text" placeholder="شماره">
 
                         <input type="text" name="name"  class="text margin-bottom-20" placeholder="نام و نام خانوادگی">
-                        <button type="submit" class="btn btn-webamooz_net">جستجو</button>
+                        <button type="submit" class="btn btn-tot">جستجو</button>
                     </div>
                 </div>
             </form>

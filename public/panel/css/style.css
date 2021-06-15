@@ -401,12 +401,12 @@ textarea {
     cursor: pointer;
 }
 
-.btn-webamooz_net {
+.btn-tot {
     background-color: #46b2f0 !important;
     color: #fff;
 }
 
-.btn-webamooz_net:hover {
+.btn-tot:hover {
     background-color: #259ee3 !important;
     transition: background-color 200ms;
 }
@@ -504,7 +504,7 @@ textarea {
     color: #e73368 !important;
 }
 
-.webamooz_net_middle {
+.tot_net_middle {
     align-content: center;
     -ms-flex-align: center;
     -webkit-box-align: center;
@@ -829,7 +829,7 @@ textarea {
 .header__logo {
     height: 44px;
     width: 200px;
-    background: url("../img/weblogo.png") no-repeat;
+    background: url("../img/logo.png") no-repeat;
     margin-top: -10px;
     margin-right: 20px;
 }
@@ -1906,4 +1906,31 @@ span.tagRemove:hover {
 
 .multi-text{
     margin-bottom: 15px;
+}
+.alert-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    display: none;
+}
+
+.failure {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    display: none;
+}
+
+.warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    display: none;
 }

@@ -61,7 +61,7 @@
                         <option value="{{$category->id}}">{{$category->title}}</option>
                         @endforeach
                     </select>
-                    <button class="btn btn-webamooz_net">اضافه کردن</button>
+                    <button class="btn">اضافه کردن</button>
 
                 </form>
             </div>

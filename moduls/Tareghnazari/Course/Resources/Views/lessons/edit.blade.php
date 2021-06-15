@@ -39,7 +39,7 @@
                 <x-file placeholder="آپلود درس *" name="lesson_file" :value="$lesson->media" />
                 <x-textarea placeholder="توضیحات درس" name="desc" value="{{ $lesson->desc }}" />
                 <br>
-                <button class="btn btn-webamooz_net">بروزرسانی درس</button>
+                <button class="btn btn-tot">بروزرسانی درس</button>
             </form>
         </div>
     </div>

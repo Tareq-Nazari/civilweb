@@ -17,5 +17,7 @@ Route::group(["namespace" => "Tareghnazari\Course\Http\Controllers", 'middleware
     $router->patch('/courses/{course}/lessens/reject-multiple', 'LessonController@rejectMultiple')->name('lessons.rejectMultiple');
     $router->patch('/lessons/{lesson}/lock', 'LessonController@lock')->name('lessons.lock');
     $router->patch('/lessons/{lesson}/unlock', 'LessonController@unlock')->name('lessons.unlock');
+    $router->get('/lessons/{lesson}/download', [LessonController::class,'download'])->name('lessons.download');
+
 
 });

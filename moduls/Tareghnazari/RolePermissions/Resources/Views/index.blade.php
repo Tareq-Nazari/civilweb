@@ -83,7 +83,7 @@
                         @enderror
                         <br>
                         <hr>
-                        <button class="btn btn-webamooz_net">اضافه کردن</button>
+                        <button class="btn btn-tot">اضافه کردن</button>
 
                     </form>
                 </div>

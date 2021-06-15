@@ -2,6 +2,7 @@
 
 namespace Tareghnazari\Dashboard\Providers;
 use Illuminate\Support\ServiceProvider;
+use Tareghnazari\RolePermissions\Models\Permission;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -19,7 +20,7 @@ class DashboardServiceProvider extends ServiceProvider
             'icon' => 'i-dashboard',
             'url' => '/home',
             'title' => 'پیشخوان',
-
+            'permission' => Permission::PERMISSION_TEACH
         ]);
 
     }

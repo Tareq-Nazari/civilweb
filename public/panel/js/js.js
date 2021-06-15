@@ -211,10 +211,11 @@ $('.discounts #discounts-field-2').on('click', function (e) {
 $('.discounts #discounts-field-1').on('click', function (e) {
     $('.discounts .dropdown-select').removeClass('is-active')
 });
+
 function updateConfirmationStatus(event, route, message, status, field = 'confirmation_status') {
     event.preventDefault();
-    if(confirm(message)){
-        $.post(route, { _method: "PATCH", _token: $('meta[name="_token"]').attr('content') })
+    if (confirm(message)) {
+        $.post(route, {_method: "PATCH", _token: $('meta[name="_token"]').attr('content')})
             .done(function (response) {
                 $(event.target).closest('tr').find('td.' + field).text(status);
                 $.toast({
@@ -238,8 +239,8 @@ function updateConfirmationStatus(event, route, message, status, field = 'confir
 function deleteItem(event, route) {
     console.log(route);
     event.preventDefault();
-    if(confirm('آیا از حذف این آیتم اطمینان دارید؟')){
-        $.post(route, { _method: "delete", _token: $('meta[name="_token"]').attr('content') })
+    if (confirm('آیا از حذف این آیتم اطمینان دارید؟')) {
+        $.post(route, {_method: "delete", _token: $('meta[name="_token"]').attr('content')})
             .done(function (response) {
                 event.target.closest('tr').remove();
                 $.toast({
@@ -259,31 +260,63 @@ function deleteItem(event, route) {
             })
     }
 }
-function activate(route , id , status) {
 
-        if (confirm('آیا از فعال کردن این کاربر اطمینان دارید')){
-            $.post(route,{_method: "post",_token:$('meta[name="_token"]').attr('content')})
-                .done(function (response) {
-                    document.getElementById(id).innerText = status
-                    document.getElementById(id).style.color = (status = 'active') ? 'green' : 'red'
-                    $.toast({
-                        heading: 'عملیات موفق',
-                        text: response.message,
-                        showHideTransition: 'slide',
-                        icon: 'success'
-                    })
+function activate(route, id, status) {
+
+    if (confirm('آیا از فعال کردن این کاربر اطمینان دارید')) {
+        $.post(route, {_method: "post", _token: $('meta[name="_token"]').attr('content')})
+            .done(function (response) {
+                document.getElementById(id).innerText = status
+                document.getElementById(id).style.color = (status = 'active') ? 'green' : 'red'
+                $.toast({
+                    heading: 'عملیات موفق',
+                    text: response.message,
+                    showHideTransition: 'slide',
+                    icon: 'success'
                 })
-                .fail(function (response) {
-                    $.toast({
-                        heading: 'عملیات ناموفق',
-                        text: response.message,
-                        showHideTransition: 'slide',
-                        icon: 'error'
-                    })
+            })
+            .fail(function (response) {
+                $.toast({
+                    heading: 'عملیات ناموفق',
+                    text: response.message,
+                    showHideTransition: 'slide',
+                    icon: 'error'
                 })
-        }
+            })
+    }
 }
 
+$(function(){
+
+    $("div.success").fadeIn(600).delay(3000).fadeOut(600);
+    $("div.failure").fadeIn(600).delay(3000).fadeOut(600);
+    $("div.warning").fadeIn(600).delay(3000).fadeOut(600);
+
+})
+
+function settlementControll(id, status) {
+
+    if (confirm('آیا از تایید تسویه حساب اطمینان دارید')) {
+        $.post('/settlements/'+status, {_method: "post", _token: $('meta[name="_token"]').attr('content') , id : id})
+            .done(function (response) {
+
+                $.toast({
+                    heading: 'عملیات موفق',
+                    text: response.message,
+                    showHideTransition: 'slide',
+                    icon: 'success'
+                })
+            })
+            .fail(function (response) {
+                $.toast({
+                    heading: 'عملیات ناموفق',
+                    text: response.message,
+                    showHideTransition: 'slide',
+                    icon: 'error'
+                })
+            })
+    }
+}
 
 
 

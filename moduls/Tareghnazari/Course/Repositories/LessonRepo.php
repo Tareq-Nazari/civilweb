@@ -65,4 +65,9 @@ class LessonRepo
 
         return $course->seasons;
     }
+
+    public function findByCourseId($courseId)
+    {
+        return Lesson::where('course_id',$courseId)->get();
+    }
 }

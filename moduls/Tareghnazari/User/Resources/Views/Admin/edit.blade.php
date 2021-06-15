@@ -39,7 +39,7 @@
                                 {{ $user->hasRole($role->name) ? 'selected' : '' }}>@lang($role->name)</option>
                         @endforeach
                     </select>
-                    <button type="submit" class="btn btn-webamooz_net">بروزرسانی کاربر</button>
+                    <button type="submit" class="btn btn-tot">بروزرسانی کاربر</button>
                 </form>
 
             </div>

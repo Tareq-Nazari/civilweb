@@ -6,7 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tareghnazari\Course\Models\Course;
+use Tareghnazari\Course\Models\Season;
 use Tareghnazari\Media\Models\Media;
+use Tareghnazari\Payment\Models\Payment;
+use Tareghnazari\RolePermissions\Models\Permission;
 use Tareghnazari\RolePermissions\Models\Role;
 use Tareghnazari\User\Notifications\ResetPasswordNotification;
 use Tareghnazari\User\Notifications\VerifyEmailNotification;
@@ -90,6 +94,30 @@ class User extends Authenticatable implements MustVerifyEmail
     public function seasons()
     {
         return $this->hasMany(Season::class);
+    }
+
+    public function hasAccessToCourse(Course $course)
+    {
+        if ($this->can(Permission::PERMISSION_MANAGE_COURSES, Course::class) ||
+            $this->id === $course->teacher_id ||
+            $course->student->contains($this->id)
+        ) return true;
+        return false;
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class,'course_student','user_id','course_id');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class,'buyer_id','id');
+    }
+
+    public function balance()
+    {
+        return $this->balance;
     }
 
 

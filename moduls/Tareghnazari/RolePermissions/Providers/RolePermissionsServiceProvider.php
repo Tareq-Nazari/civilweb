@@ -14,11 +14,11 @@ class RolePermissionsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../Resources/Views','RoleViews');
         $this->loadRoutesFrom(__DIR__.'/../Routes/role_permissions_routes.php');
         $this->loadJsonTranslationsFrom(__DIR__.'/../Resources/Lang');
-        \Gate::before(function ($user){
-            if ($user->hasPermissionTo(Permission::PERMISSION_SUPER_ADMIN)) {
-                return true;
-            }else return null;
-        });
+            \Gate::before(function ($user){
+                if ($user->hasPermissionTo(Permission::PERMISSION_SUPER_ADMIN)) {
+                    return true;
+                }else return null;
+            });
         \Gate::policy(Role::class,RolePermissionPolicy::class);
 
 

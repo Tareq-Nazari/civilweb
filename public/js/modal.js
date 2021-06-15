@@ -27,5 +27,6 @@ function showImage() {
 }
 showImage()
 
-modal('#Modal1', '800px', '#tutor-image')
+modal('#Modal1', '400px', 'btn-accept')
 modal('#Modal2', '1000px', '.btn-answer')
+modal('#Modal3', '1000px', '.btn-buy')

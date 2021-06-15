@@ -17,6 +17,7 @@ Route::middleware(['web'])->group(function ($router){
     ->name('user.search');
     $router->post('user/profileImage',[UserController::class,'profileImage'])
         ->name('user.profileImage');
+    $router->get('logout',[\App\Http\Controllers\Auth\LoginController::class,'logout']);
 });
 
 

@@ -16,6 +16,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "morilog/jalali": "3.*",
         "spatie/laravel-permission": "^4.0"
     },
     "require-dev": {
@@ -32,6 +33,7 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
+
     "extra": {
         "laravel": {
             "dont-discover": []
@@ -44,6 +46,9 @@
             "Tareghnazari\\RolePermissions\\" : "moduls/Tareghnazari/RolePermissions/",
             "Tareghnazari\\Media\\" : "moduls/Tareghnazari/Media/",
             "Tareghnazari\\Common\\" : "moduls/Tareghnazari/Common",
+            "Tareghnazari\\Front\\" : "moduls/Tareghnazari/Front/",
+            "Tareghnazari\\Payment\\" : "moduls/Tareghnazari/Payment/",
+
             "App\\": "app/",
             "Tareghnazari\\Category\\" : "moduls/Tareghnazari/Category",
             "Tareghnazari\\Course\\" : "moduls/Tareghnazari/Course",
@@ -52,6 +57,9 @@
 
         }
     },
+    "repositories": [
+
+    ],
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"

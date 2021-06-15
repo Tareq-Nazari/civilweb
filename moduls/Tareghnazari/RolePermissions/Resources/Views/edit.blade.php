@@ -34,7 +34,7 @@
         <br>
         <hr>
 
-        <button type="submit" class="btn btn-webamooz_net">بروزرسانی</button>
+        <button type="submit" class="btn btn-tot">بروزرسانی</button>
 
     </form>
 </div>

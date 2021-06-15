@@ -64,7 +64,7 @@
                 <x-file placeholder="آپلود بنر دوره" name="image" :value="$course->banner"/>
                 <x-textarea placeholder="توضیحات دوره" name="body" value="{{ $course->body }}" />
                 <br>
-                <button class="btn btn-webamooz_net">بروزرسانی دوره</button>
+                <button class="btn btn-tot">بروزرسانی دوره</button>
             </form>
         </div>
     </div>

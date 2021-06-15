@@ -5,8 +5,11 @@ namespace Tareghnazari\Course\Repositories;
 
 use Tareghnazari\Course\Models\Course;
 use Illuminate\Support\Str;
+use Tareghnazari\Course\Models\CourseStudent;
+use Tareghnazari\Course\Models\Lesson;
 use Tareghnazari\Media\Models\Media;
 use Tareghnazari\Media\Services\MediaFileService;
+use Tareghnazari\User\Models\User;
 
 class CourseRepo
 {
@@ -33,7 +36,6 @@ class CourseRepo
 
     }
 
-
     public function delete($id)
     {
         $course = $this->findById($id);
@@ -45,13 +47,14 @@ class CourseRepo
 
     }
 
-    public function  findById($id)
+    public function findById($id)
     {
-        return Course::find($id);
+        return Course::find($id)->withCount('student')->withCount('lessons');
+
 
     }
 
-    public function update( $id , $values)
+    public function update($id, $values)
     {
         return Course::where('id', $id)->update([
             'teacher_id' => $values->teacher_id,
@@ -69,20 +72,52 @@ class CourseRepo
 
     }
 
-
     public function updateConfirmationStatus($id, $status)
     {
-        return Course::where('id', $id)->update(['confirmation_status'=> $status]);
+        return Course::where('id', $id)->update(['confirmation_status' => $status]);
     }
 
     public function updateStatus($id, $status)
     {
-        return Course::where('id', $id)->update(['status'=> $status]);
+        return Course::where('id', $id)->update(['status' => $status]);
     }
 
     public function getCoursesByTeacherId($id)
     {
-        return Course::where('teacher_id' , $id)->get();
+        return Course::where('teacher_id', $id)->get();
+    }
+
+    public function getLatestCourses()
+    {
+        return Course::query()->orderBy('created_at', 'asc')->take(8)->get();
+    }
+
+    public function getPopularCourses()
+    {
+        $courses = Course::withCount('student')->orderByDesc('student_count')->take(8)->get();
+        return $courses;
+    }
+
+    public function userHasRegistered($id, $course)
+    {
+
+        return \DB::table('course_student')
+            ->where('course_id', $course->id)
+            ->where('user_id', $id)
+            ->select('id')
+            ->get()->toArray();
+
+
+    }
+
+    public function registerStudentToCourse($studentId, $courseId)
+    {
+
+        $course = Course::find($courseId);
+        $user = User::find($studentId);
+        $course->student()->attach($user);
+
+
     }
 
 

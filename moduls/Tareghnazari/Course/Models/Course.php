@@ -49,4 +49,23 @@ class Course extends Model
 
     }
 
+    public function getDuration()
+    {
+        return gmdate("H:i:s",$this->lessons()->newQuery()->select('time')->sum('time')*60);
+    }
+
+    public function student()
+    {
+        return $this->belongsToMany(User::class,'course_student','course_id','user_id');
+    }
+    public function getFinalPrice()
+    {
+        return $this->price - $this->getDiscountAmount();
+    }
+    public function getDiscountAmount()
+    {
+        // todo
+        return 0;
+    }
+
 }

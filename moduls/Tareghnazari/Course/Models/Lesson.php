@@ -27,4 +27,10 @@ class Lesson extends Model
        return $this->hasOne(Media::class,'id','media_id');
     }
 
+    public function getDuration()
+    {
+        return gmdate("H:i:s",$this->time*60);
+
+    }
+
 }

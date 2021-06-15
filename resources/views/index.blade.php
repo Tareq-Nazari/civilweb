@@ -10,11 +10,11 @@
           content="وب آموز وبسایت آموزش برنامه نویسی وب و موبایل ، جاوااسکریپت ، لاراول ، react ، آموزش node js با مجرب ترین مدرسین">
     <meta name="keywords"
           content="آموزش طراحی سایت,آموزش برنامه نویسی,طراحی وب,ساخت وب سایت,آموزش git,آموزش لاراول,آموزش php,آموزش react,آموزش پی اچ پی,آموزش laravel,آموزش جاوا اسکریپت,آموزش ساخت وب سایت,آموزش mvc,آموزش React Native,وب آموز , وب اموز">
-    <link rel="canonical" href="https://webamooz.net"/>
+    <link rel="canonical" href=""/>
     <meta property="og:title" content="وب آموز | آموزش برنامه‌ نویسی و طراحی وب"/>
     <meta property="og:description"
           content="وب آموز وبسایت آموزش برنامه نویسی وب و موبایل ، جاوااسکریپت ، لاراول ، react ، آموزش node js با مجرب ترین مدرسین"/>
-    <meta property="og:url" content="https://webamooz.net"/>
+    <meta property="og:url" content=""/>
     <meta property="og:site_name" content="وبسایت آموزشی وب آموز"/>
     <meta property="og:brand" content="وب آموز"/>
     <meta property="og:locale" content="fa"/>
@@ -213,7 +213,7 @@
                 <li class="main-menu d-none"><a href="#">درباره ما</a></li>
                 <li class="main-menu"><a href="contact-us.html">تماس ما</a></li>
                 <li class="main-menu join-teachers-li"><a href="become-a-teacher.html">تدریس در وب آموز</a></li>
-                <li class="main-menu"><a href="https://www.webamooz.net/blog">مقالات</a></li>
+                <li class="main-menu"><a href="">مقالات</a></li>
             </ul>
 
             <div class="dark-light">
@@ -639,7 +639,7 @@
     <article class="container blog">
         <div class="b-head">
             <h2>آخرین مقالات</h2>
-            <a href="https://webamooz.net/blog">مشاهده همه</a>
+            <a href="">مشاهده همه</a>
         </div>
         <div class="articles">
             <div class="col">
@@ -732,11 +732,7 @@
             </div>
         </div>
     </div>
-    <div class="webamooz">
-        طراحی و توسعه با لاراول توسط تیم
-        <a href="https://webamooz.net">وب آموز</a>
-        © 1399
-    </div>
+
 </footer>
 <div class="overlay"></div>
 <script src="js/jquery-3.4.1.min.js"></script>
